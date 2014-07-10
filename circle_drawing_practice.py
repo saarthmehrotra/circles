@@ -1,5 +1,8 @@
 from Tkinter import *
 import math
+import Image 
+import ImageTk
+
 
 root=Tk()
 
@@ -22,7 +25,10 @@ class Handler:
         self.r = math.sqrt(((self.x1 - self.x2) ** 2) + ((self.y1 - self.y2) ** 2))
         self.w.create_oval(self.x1 - self.r,self.y1 - self.r ,self.x1 + self.r, self.y1 +self.r,fill='',outline="black")
 
-w = Canvas(root, width=800, height=800)
+img_test = Image.open("test.png")
+test = ImageTk.PhotoImage(img_test)
+w = Canvas(width=img_test.size[0]+20,height=img_test.size[1]+20)
+w.create_image(10, 10, anchor=NW, image=test)
 w.config(cursor='cross')
 w.pack(expand=YES, fill=BOTH)
 
